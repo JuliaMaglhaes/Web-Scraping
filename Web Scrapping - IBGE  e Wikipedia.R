@@ -52,6 +52,8 @@ wikipedia <- read_html("https://en.wikipedia.org/wiki/Web_scraping")
 # "FAQ about linking – Are website terms of use binding contracts?".
 body_text <- wikipedia %>% html_elements("#cite_note-5") %>% html_text()
 
+?html_elements
+
 substr(body_text, start = 1, stop = 20)
 
 substr(body_text, start = 21, stop = nchar(body_text))
@@ -63,14 +65,16 @@ techniques
 
 ## Olhando página web
 
-#Vamos olhar a página http://www.r-datacollection.com/materials/html/OurFirstHTML.html
+# Acessar e olhar a página http://www.r-datacollection.com/materials/html/OurFirstHTML.html
 
 library("httr")
 
-#Usa método GET()
+# Usa método GET() - PEGA
 website <- GET("http://www.r-datacollection.com/materials/html/OurFirstHTML.html")
 
-#Visualiza como texto
+?GET
+
+# Visualiza como texto
 content(website, "text")
 
 ## Buscando dados da API do IBGE
@@ -80,8 +84,8 @@ library("httr")
 library("jsonlite")
 library("data.table")
 
-#Mostra API de países do IBGE
-#https://servicodados.ibge.gov.br/api/docs/paises
+## API do IBGE
+# Link: https://servicodados.ibge.gov.br/api/docs/paises
 
 #Parâmetros
 #country = "BR"
@@ -101,7 +105,7 @@ url2 = "https://servicodados.ibge.gov.br/api/v1/paises/BR|US"
 
 page_data2 <- GET(url2)
 
-#tipo de arquivo
+# Tipo de arquivo
 http_type(page_data2)
 
 jsonText <- content(page_data2, "text")
